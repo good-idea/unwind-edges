@@ -1,6 +1,6 @@
 {
   "name": "@good-idea/unwind-edges",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple utilty for extracting paginated GraphQL data",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
