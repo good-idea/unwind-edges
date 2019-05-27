@@ -1,8 +1,10 @@
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/good-idea/unwind-edges/master.svg?style=flat-square)](https://codecov.io/gh/good-idea/unwind-edges/)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/good-idea/unwind-edges/master.svg?style=flat-square)](https://codecov.io/gh/good-idea/unwind-edges/) ![](https://img.badgesize.io/https://unpkg.com/@good-idea/unwind-edges/lib/index.js.svg) ![](https://img.badgesize.io/https://unpkg.com/@good-idea/unwind-edges/lib/index.js.svg?compression=gzip)
 
 # unwind-edges
 
 `uwindEdges` is a simple utility for extracting nodes from GraphQL responses that are paginated with the [Relay Cursor Connection spec](https://facebook.github.io/relay/graphql/connections.htm). This structure is handy for handling pagination in your requests, but after that, you usually just want the nodes.
+
+# usage
 
 Takes a Cursor Connection and returns a tuple of (1) simple array of the nodes, with an additional `__cursor` property, and (2) the original page info.
 
@@ -81,7 +83,7 @@ const [users] = unwindEdges<User>(sampleResponse)
 console.log(users[0].id) // 👍
 console.log(users[0].name) // 👍
 console.log(users[0].__cursor) // 👍
-console.log(users[0].birthday) // ❗️ Property 'username' does not exist on type 'NodeWithCursor<User>'.
+console.log(users[0].birthday) // ❗️ Property 'birthday' does not exist on type 'NodeWithCursor<User>'.
 ```
 
 The module also exports the `Paginated<T>` interface, which can be handy if you want to create an interface for a Relay Connection:
