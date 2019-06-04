@@ -49,7 +49,7 @@ describe('unwindEdges', () => {
 
   it('should return an empty array and lastCursor + firstCursor as undefined when the edges are empty', () => {
     const emptyEdges = {
-      //@ts-ignore
+      // @ts-ignore
       edges: [],
       pageInfo: {
         hasNextPage: false,
