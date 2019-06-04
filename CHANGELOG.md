@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/good-idea/unwind-edges/compare/v1.0.2...v1.0.3) (2019-05-27)
+
+
+### Bug Fixes
+
+* **lib:** rename EdgeWithCursor to NodeWithCursor ([018b50c](https://github.com/good-idea/unwind-edges/commit/018b50c))
+
 ## [1.0.2](https://github.com/good-idea/unwind-edges/compare/v1.0.1...v1.0.2) (2019-05-27)
 
 
