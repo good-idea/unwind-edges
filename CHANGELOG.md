@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/good-idea/unwind-edges/compare/v1.0.3...v1.1.0) (2019-06-04)
+
+
+### Bug Fixes
+
+* fix lint typo ([7f963ff](https://github.com/good-idea/unwind-edges/commit/7f963ff))
+
+
+### Features
+
+* allow empty edges, missing pageInfo, extra pageInfo ([659b534](https://github.com/good-idea/unwind-edges/commit/659b534))
+
 ## [1.0.3](https://github.com/good-idea/unwind-edges/compare/v1.0.2...v1.0.3) (2019-05-27)
 
 
