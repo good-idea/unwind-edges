@@ -38,4 +38,39 @@ describe('unwindEdges', () => {
     expect(firstCursor).toBe(firstUser.cursor)
     expect(lastCursor).toBe(thirdUser.cursor)
   })
+
+  it('should accept an object without any pageInfo', () => {
+    const edgesNoInfo = {
+      edges: sampleResponse.allUsers.edges,
+    }
+    const [, { pageInfo }] = unwindEdges(edgesNoInfo)
+    expect(pageInfo).toBe(undefined)
+  })
+
+  it('should return an empty array and lastCursor + firstCursor as undefined when the edges are empty', () => {
+    const emptyEdges = {
+      //@ts-ignore
+      edges: [],
+      pageInfo: {
+        hasNextPage: false,
+        hasPreviousPage: false,
+      },
+    }
+    const [items, { lastCursor, firstCursor }] = unwindEdges(emptyEdges)
+    expect(items.length).toBe(0)
+    expect(lastCursor).toBe(undefined)
+    expect(firstCursor).toBe(undefined)
+  })
+
+  it('should return any extra properties on pageInfo', () => {
+    const extraInfo = {
+      edges: sampleResponse.allUsers.edges,
+      pageInfo: {
+        ...sampleResponse.allUsers.pageInfo,
+        someProperty: 'someValue',
+      },
+    }
+    const [, { pageInfo }] = unwindEdges(extraInfo)
+    expect(pageInfo.someProperty).toBe('someValue')
+  })
 })

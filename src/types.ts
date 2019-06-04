@@ -3,20 +3,14 @@ export interface Edge<NodeType> {
   node: NodeType
 }
 
-export interface PageInfoPrev {
-  hasNextPage: boolean
-  hasPrevPage: boolean
-}
-
-interface PageInfoPrevious {
+interface PageInfo {
   hasNextPage: boolean
   hasPreviousPage: boolean
+  [key: string]: any
 }
 
-export type PageInfo = PageInfoPrev | PageInfoPrevious
-
 export interface Paginated<NodeType> {
-  pageInfo: PageInfo
+  pageInfo?: PageInfo
   edges: Array<Edge<NodeType>>
 }
 
@@ -25,9 +19,9 @@ export type NodeWithCursor<NodeType> = NodeType & {
 }
 
 export interface PaginationInfo {
-  pageInfo: PageInfo
+  pageInfo?: PageInfo
   lastCursor?: string
-  firstCursor: string
+  firstCursor?: string
 }
 
 export type UnwoundEdges<EdgeType> = [Array<NodeWithCursor<EdgeType>>, PaginationInfo]

@@ -13,8 +13,8 @@ export const unwindEdges = <EdgeType = any>({ edges, pageInfo }: Paginated<EdgeT
     edges.map((edge) => ({ ...edge.node, __cursor: edge.cursor })),
     {
       pageInfo,
-      lastCursor: edges[edges.length - 1].cursor,
-      firstCursor: edges[0].cursor,
+      lastCursor: edges.length ? edges[edges.length - 1].cursor : undefined,
+      firstCursor: edges.length ? edges[0].cursor : undefined,
     },
   ]
 }
