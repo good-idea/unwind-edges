@@ -4,7 +4,7 @@
   "description": "Simple utilty for extracting paginated GraphQL data",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
-  "types": "lib/types.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
