@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/good-idea/unwind-edges/compare/v1.1.0...v1.1.1) (2019-06-05)
+
+
+### Bug Fixes
+
+* export types, too ([38ffaa5](https://github.com/good-idea/unwind-edges/commit/38ffaa5))
+* update types location in package.json ([92a50ec](https://github.com/good-idea/unwind-edges/commit/92a50ec))
+
 # [1.1.0](https://github.com/good-idea/unwind-edges/compare/v1.0.3...v1.1.0) (2019-06-04)
 
 
