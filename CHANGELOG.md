@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/good-idea/unwind-edges/compare/v1.1.2...v1.1.3) (2019-06-24)
+
+
+### Bug Fixes
+
+* make PageInfo friendlier ([9fbe661](https://github.com/good-idea/unwind-edges/commit/9fbe661))
+
 ## [1.1.2](https://github.com/good-idea/unwind-edges/compare/v1.1.1...v1.1.2) (2019-06-24)
 
 
