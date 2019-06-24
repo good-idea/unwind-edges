@@ -4,8 +4,9 @@ export interface Edge<NodeType> {
 }
 
 export interface PageInfo {
-  hasNextPage: boolean
-  hasPreviousPage: boolean
+  hasNextPage?: boolean
+  hasPreviousPage?: boolean
+  hasPrevPage?: boolean
   [key: string]: any
 }
 
