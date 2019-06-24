@@ -3,7 +3,7 @@ export interface Edge<NodeType> {
   node: NodeType
 }
 
-interface PageInfo {
+export interface PageInfo {
   hasNextPage: boolean
   hasPreviousPage: boolean
   [key: string]: any
