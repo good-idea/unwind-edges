@@ -39,6 +39,13 @@ describe('unwindEdges', () => {
     expect(lastCursor).toBe(thirdUser.cursor)
   })
 
+  it('should return an empty array when given an undefined value', () => {
+    const [edges, { pageInfo }] = unwindEdges(undefined)
+    expect(edges.length).toBe(0)
+    expect(pageInfo.hasNextPage).toBe(false)
+    expect(pageInfo.hasPreviousPage).toBe(false)
+  })
+
   it('should accept an object without any pageInfo', () => {
     const edgesNoInfo = {
       edges: sampleResponse.allUsers.edges,

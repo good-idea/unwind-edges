@@ -8,7 +8,22 @@ import { UnwoundEdges, Paginated } from './types'
  * @returns {UnwoundEdges<EdgeType>}
  */
 
-export const unwindEdges = <EdgeType = any>({ edges, pageInfo }: Paginated<EdgeType>): UnwoundEdges<EdgeType> => {
+const emptyResponse: UnwoundEdges<any> = [
+  [],
+  {
+    pageInfo: {
+      hasNextPage: false,
+      hasPreviousPage: false,
+    },
+    firstCursor: undefined,
+    lastCursor: undefined,
+  },
+]
+
+export const unwindEdges = <EdgeType = any>(paginated?: Paginated<EdgeType>): UnwoundEdges<EdgeType> => {
+  if (!paginated) return emptyResponse
+  const edges = paginated.edges || []
+  const { pageInfo } = paginated
   return [
     edges.map((edge) => ({ ...edge.node, __cursor: edge.cursor })),
     {
