@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/good-idea/unwind-edges/compare/v1.1.3...v1.2.0) (2019-10-18)
+
+
+### Features
+
+* **lib:** return empty response when passed undefined ([c1e7eb9](https://github.com/good-idea/unwind-edges/commit/c1e7eb9))
+
 ## [1.1.3](https://github.com/good-idea/unwind-edges/compare/v1.1.2...v1.1.3) (2019-06-24)
 
 
