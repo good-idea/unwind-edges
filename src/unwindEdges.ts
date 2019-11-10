@@ -1,4 +1,4 @@
-import { UnwoundEdges, Paginated } from './types'
+import { Edge, NodeWithCursor, UnwoundEdges, Paginated } from './types'
 
 /**
  * unwindEdges
@@ -20,12 +20,19 @@ const emptyResponse: UnwoundEdges<any> = [
   },
 ]
 
-export const unwindEdges = <EdgeType = any>(paginated?: Paginated<EdgeType>): UnwoundEdges<EdgeType> => {
+const addCursorToEdgeNodes = <NodeType>(edge: Edge<NodeType>): NodeWithCursor<NodeType> => {
+  return {
+    ...edge.node,
+    __cursor: edge.cursor,
+  }
+}
+
+export const unwindEdges = <EdgeType>(paginated?: Paginated<EdgeType>): UnwoundEdges<EdgeType> => {
   if (!paginated) return emptyResponse
   const edges = paginated.edges || []
   const { pageInfo } = paginated
   return [
-    edges.map((edge) => ({ ...edge.node, __cursor: edge.cursor })),
+    edges.map(addCursorToEdgeNodes),
     {
       pageInfo,
       lastCursor: edges.length ? edges[edges.length - 1].cursor : undefined,
