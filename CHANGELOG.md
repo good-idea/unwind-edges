@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/good-idea/unwind-edges/compare/v1.3.0...v1.4.0) (2020-04-29)
+
+
+### Bug Fixes
+
+* **lib:** fix failing tests, add utils tests ([f4816b7](https://github.com/good-idea/unwind-edges/commit/f4816b79bdd666e1a7da004c5ad50ed5b6059dc9))
+
+
+### Features
+
+* **lib:** better handling of null & undefined values ([24d5b7e](https://github.com/good-idea/unwind-edges/commit/24d5b7ec0790356e46c3c4b658a20b5a3af2af87))
+
 # [1.3.0](https://github.com/good-idea/unwind-edges/compare/v1.2.0...v1.3.0) (2019-11-10)
 
 
