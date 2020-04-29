@@ -1,28 +1,30 @@
 export interface Edge<NodeType> {
-  cursor: string
-  node: NodeType
+  cursor?: string | null
+  node?: NodeType | null
 }
 
 export interface PageInfo {
-  hasNextPage?: boolean
-  hasPreviousPage?: boolean
-  hasPrevPage?: boolean
+  hasNextPage?: boolean | null
+  hasPreviousPage?: boolean | null
+  hasPrevPage?: boolean | null
   [key: string]: any
 }
 
 export interface Paginated<NodeType> {
-  pageInfo?: PageInfo
-  edges: Array<Edge<NodeType>>
+  pageInfo?: PageInfo | null
+  edges?: Array<Edge<NodeType> | null | void> | null
 }
 
 export type NodeWithCursor<NodeType> = NodeType & {
-  __cursor: string
+  __cursor?: string
 }
 
 export interface PaginationInfo {
-  pageInfo?: PageInfo
+  pageInfo?: PageInfo | null
   lastCursor?: string
   firstCursor?: string
 }
 
 export type UnwoundEdges<EdgeType> = [Array<NodeWithCursor<EdgeType>>, PaginationInfo]
+
+export type Maybe<T> = T | null | void
