@@ -1,4 +1,5 @@
 import { Edge, NodeWithCursor, UnwoundEdges, Paginated } from './types'
+import { definitely } from './utils'
 
 /**
  * unwindEdges
@@ -20,23 +21,25 @@ const emptyResponse: UnwoundEdges<any> = [
   },
 ]
 
-const addCursorToEdgeNodes = <NodeType>(edge: Edge<NodeType>): NodeWithCursor<NodeType> => {
+const addCursorToEdgeNodes = <NodeType>(edge: Edge<NodeType>): NodeWithCursor<NodeType> | null => {
+  if (!edge || !edge.node) return null
   return {
     ...edge.node,
-    __cursor: edge.cursor,
+    __cursor: edge.cursor ? edge.cursor : undefined,
   }
 }
 
-export const unwindEdges = <EdgeType>(paginated?: Paginated<EdgeType>): UnwoundEdges<EdgeType> => {
+export const unwindEdges = <EdgeType>(paginated?: Paginated<EdgeType> | null): UnwoundEdges<EdgeType> => {
   if (!paginated) return emptyResponse
-  const edges = paginated.edges || []
+  const allEdges = paginated.edges || []
+  const edges = definitely(allEdges)
   const { pageInfo } = paginated
   return [
-    edges.map(addCursorToEdgeNodes),
+    definitely(edges.map(addCursorToEdgeNodes)),
     {
       pageInfo,
-      lastCursor: edges.length ? edges[edges.length - 1].cursor : undefined,
-      firstCursor: edges.length ? edges[0].cursor : undefined,
+      lastCursor: edges.length ? edges[edges.length - 1].cursor || undefined : undefined,
+      firstCursor: edges.length ? edges[0].cursor || undefined : undefined,
     },
   ]
 }
