@@ -90,7 +90,7 @@
     "rollup": "^2.7.2",
     "rollup-plugin-typescript2": "^0.27.0",
     "semantic-release": "^17.0.7",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "trash-cli": "^3.0.0",
     "ts-jest": "^25.4.0",
     "typedoc": "^0.17.5",
