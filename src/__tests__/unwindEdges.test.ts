@@ -3,7 +3,7 @@ import { unwindEdges } from '../'
 
 const sampleResponse = {
   allUsers: {
-    pageInfo: { hasNextPage: true, hasPreviousPage: false },
+    pageInfo: { hasNextPage: true, hasPrevPage: false, hasPreviousPage: false },
     edges: [
       { cursor: 'x123', node: { id: 'abc', name: 'frank' } },
       { cursor: 'y234', node: { id: 'xyz', name: 'ursula' } },
@@ -64,6 +64,7 @@ describe('unwindEdges', () => {
       pageInfo: {
         hasNextPage: false,
         hasPreviousPage: false,
+        hasPrevPage: false,
       },
     }
     const [items, { lastCursor, firstCursor }] = unwindEdges(emptyEdges)

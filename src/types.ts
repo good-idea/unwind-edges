@@ -1,45 +1,48 @@
+/**
+ * `paginate` and `unwindEdges` have different type definitions.
+ *
+ * This is to allow for loose paramaters when unwinding edges,
+ * (for instance, missing nodes), while ensuring that `paginate`
+ * returns objects in a consistent shape.
+ */
+export type Cursor = string | number
+
 export type Node = Record<string, any>
 
-export interface Edge<NodeType = Node> {
-  cursor?: string | number | null
-  node: NodeType
+export type Maybe<T> = T | null | void
+
+export interface Edge<T = Node> {
+  cursor?: Cursor | undefined
+  node: T
 }
 
 export interface PageInfo {
-  hasNextPage?: boolean | null
-  hasPreviousPage?: boolean | null
-  hasPrevPage?: boolean | null
+  hasNextPage: boolean | null
+  hasPreviousPage: boolean | null
+  hasPrevPage: boolean | null
   [key: string]: any
 }
 
-export interface PaginatedWithPageInfo<NodeType = Node> {
+export interface PaginatedWithPageInfo<T = Node> {
   pageInfo: PageInfo
-  edges: Array<Edge<NodeType>>
+  edges: Array<Edge<T>>
 }
 
-export interface Paginated<NodeType = Node> {
+export interface Paginated<T = Node, EdgeType = Edge<T>> {
   pageInfo?: PageInfo | null
-  edges: Array<Edge<NodeType>>
-}
-
-export type NodeWithCursor<NodeType = Node> = NodeType & {
-  __cursor?: string
+  edges: Array<EdgeType>
 }
 
 export interface PaginationInfo {
   pageInfo?: PageInfo | null
-  lastCursor?: string
-  firstCursor?: string
+  lastCursor?: Cursor
+  firstCursor?: Cursor
 }
 
 export interface PaginationArgs {
   first?: number
   after?: string
 }
-
-export type UnwoundEdges<EdgeType> = [Array<NodeWithCursor<EdgeType>>, PaginationInfo]
-
-export type Maybe<T> = T | null | void
 
 export interface PaginateConfig {
   cursorKey?: string

@@ -23,11 +23,16 @@ export const paginate = <T extends Node>(
   const itemsToPaginate = paginationArgs?.first ? items.slice(0, paginationArgs.first) : items
   const edges = itemsToEdges<T>(itemsToPaginate, config)
   const hasNextPage = paginationArgs?.first ? items.length > paginationArgs.first : false
-  // TODO
-  const hasPreviousPage = false
+  const hasPreviousPage = Boolean(paginationArgs?.after)
+  const firstCursor = edges[0].cursor
+  const lastCursor = edges[edges.length - 1].cursor
+
   const pageInfo = {
     hasNextPage,
     hasPreviousPage,
+    hasPrevPage: hasPreviousPage,
+    firstCursor,
+    lastCursor,
   }
 
   return {
