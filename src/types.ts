@@ -1,6 +1,8 @@
-export interface Edge<NodeType> {
-  cursor?: string | null
-  node?: NodeType | null
+export type Node = Record<string, any>
+
+export interface Edge<NodeType = Node> {
+  cursor?: string | number | null
+  node: NodeType
 }
 
 export interface PageInfo {
@@ -10,12 +12,17 @@ export interface PageInfo {
   [key: string]: any
 }
 
-export interface Paginated<NodeType> {
-  pageInfo?: PageInfo | null
-  edges?: Array<Edge<NodeType> | null | void> | null
+export interface PaginatedWithPageInfo<NodeType = Node> {
+  pageInfo: PageInfo
+  edges: Array<Edge<NodeType>>
 }
 
-export type NodeWithCursor<NodeType> = NodeType & {
+export interface Paginated<NodeType = Node> {
+  pageInfo?: PageInfo | null
+  edges: Array<Edge<NodeType>>
+}
+
+export type NodeWithCursor<NodeType = Node> = NodeType & {
   __cursor?: string
 }
 
@@ -25,6 +32,15 @@ export interface PaginationInfo {
   firstCursor?: string
 }
 
+export interface PaginationArgs {
+  first?: number
+  after?: string
+}
+
 export type UnwoundEdges<EdgeType> = [Array<NodeWithCursor<EdgeType>>, PaginationInfo]
 
 export type Maybe<T> = T | null | void
+
+export interface PaginateConfig {
+  cursorKey?: string
+}
