@@ -11,7 +11,7 @@ jobs:
     - stage: test
       script: yarn test
     - stage: release
-      if: branch = master
+      if: branch = main
       node_js: lts/*
       before_install: skip
       script:
@@ -22,3 +22,5 @@ jobs:
         provider: script
         skip_cleanup: true
         script: npm run test && npm run build && npm run semantic-release && npm run test:coverage:send
+        on:
+          branch: main
