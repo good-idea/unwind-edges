@@ -33,12 +33,6 @@ export interface Paginated<T = Node, EdgeType = Edge<T>> {
   edges: Array<EdgeType>
 }
 
-export interface PaginationInfo {
-  pageInfo?: PageInfo | null
-  lastCursor?: Cursor
-  firstCursor?: Cursor
-}
-
 export interface PaginationArgs {
   first?: number
   after?: string

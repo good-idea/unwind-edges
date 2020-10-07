@@ -1,13 +1,20 @@
-import { Edge, Node, Cursor, PaginationInfo, Paginated } from './types'
+import { Maybe, Node, Cursor, PageInfo } from './types'
 import { definitely } from './utils'
 
 export type NodeWithCursor<T = Node> = T & {
   __cursor?: Cursor | undefined
 }
 
+export interface PaginationInfo {
+  pageInfo?: Partial<PageInfo> | null
+  lastCursor?: Cursor
+  firstCursor?: Cursor
+}
+
 export type UnwoundEdges<EdgeType> = [Array<NodeWithCursor<EdgeType>>, PaginationInfo]
 
-export interface PartialEdge<T> extends Omit<Edge<T>, 'node'> {
+export interface PartialEdge<T> {
+  cursor?: Maybe<Cursor>
   node?: T | null | undefined
 }
 
@@ -24,12 +31,17 @@ const emptyResponse: UnwoundEdges<any> = [
   },
 ]
 
-const addCursorToEdgeNodes = <T>(edge: PartialEdge<T>): NodeWithCursor<T> | null => {
+const addCursorToEdgeNodes = <T>(edge: PartialEdge<Maybe<T>>): NodeWithCursor<T> | null => {
   if (!edge || !edge.node) return null
   return {
     ...edge.node,
     __cursor: edge.cursor ? edge.cursor : undefined,
   }
+}
+
+export interface PaginatedInput<T = Node> {
+  pageInfo?: Partial<PageInfo> | null
+  edges?: Maybe<Array<Maybe<PartialEdge<Maybe<T>>>>>
 }
 
 /**
@@ -39,7 +51,7 @@ const addCursorToEdgeNodes = <T>(edge: PartialEdge<T>): NodeWithCursor<T> | null
  * @param {Paginated<EdgeType>} { edges, pageInfo }
  * @returns {UnwoundEdges<EdgeType>}
  */
-export const unwindEdges = <T>(paginated?: Partial<Paginated<T, PartialEdge<T>>> | null): UnwoundEdges<T> => {
+export const unwindEdges = <T>(paginated?: PaginatedInput<T> | null): UnwoundEdges<T> => {
   if (!paginated) return emptyResponse
   const allEdges = paginated.edges || []
   const edges = definitely(allEdges)
