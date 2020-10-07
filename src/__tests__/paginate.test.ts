@@ -47,4 +47,13 @@ describe('paginate', () => {
     expect(paginated.edges[0].cursor).toBe(undefined)
     expect(paginated.edges[1].cursor).toBe(undefined)
   })
+
+  it('should handle empty inputs', async () => {
+    const paginated = paginate([])
+    expect(paginated.edges.length).toBe(0)
+    expect(paginated.pageInfo.hasNextPage).toBe(false)
+    expect(paginated.pageInfo.hasPreviousPage).toBe(false)
+    expect(paginated.pageInfo.firstCursor).toBe(undefined)
+    expect(paginated.pageInfo.lastCursor).toBe(undefined)
+  })
 })

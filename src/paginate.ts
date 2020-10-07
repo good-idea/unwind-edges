@@ -24,8 +24,8 @@ export const paginate = <T extends Node>(
   const edges = itemsToEdges<T>(itemsToPaginate, config)
   const hasNextPage = paginationArgs?.first ? items.length > paginationArgs.first : false
   const hasPreviousPage = Boolean(paginationArgs?.after)
-  const firstCursor = edges[0].cursor
-  const lastCursor = edges[edges.length - 1].cursor
+  const firstCursor = edges[0]?.cursor
+  const lastCursor = edges[edges.length - 1]?.cursor
 
   const pageInfo = {
     hasNextPage,
