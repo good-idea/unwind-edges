@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/good-idea/unwind-edges/compare/v1.5.1...v1.5.2) (2020-10-07)
+
+
+### Bug Fixes
+
+* **lib:** fix empty array input for paginate ([9947350](https://github.com/good-idea/unwind-edges/commit/9947350a3d9cc1778605d6c8b39218cd49e0c459))
+
 ## [1.5.1](https://github.com/good-idea/unwind-edges/compare/v1.5.0...v1.5.1) (2020-10-07)
 
 
