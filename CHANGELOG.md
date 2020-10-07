@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/good-idea/unwind-edges/compare/v1.4.0...v1.5.0) (2020-10-07)
+
+
+### Bug Fixes
+
+* **lib:** fix types & tests ([38ce106](https://github.com/good-idea/unwind-edges/commit/38ce1064e4823c5a1eae55d7e6da38564e13e1ec))
+
+
+### Features
+
+* **lib:** export paginate utility ([329ce76](https://github.com/good-idea/unwind-edges/commit/329ce76e6c62d085f5a68bea13beeb65cb73c0da))
+
 # [1.4.0](https://github.com/good-idea/unwind-edges/compare/v1.3.0...v1.4.0) (2020-04-29)
 
 
