@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/good-idea/unwind-edges/compare/v1.5.2...v1.5.3) (2020-11-08)
+
+
+### Bug Fixes
+
+* **lib:** fix cursor type ([94c0f2a](https://github.com/good-idea/unwind-edges/commit/94c0f2aeb4e72d9ccf4a63f2a9cfc0a86ae69f5b))
+
 ## [1.5.2](https://github.com/good-idea/unwind-edges/compare/v1.5.1...v1.5.2) (2020-10-07)
 
 
