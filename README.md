@@ -94,21 +94,21 @@ console.log(paginatedUsers)
  *  {
  *    edges: [
  *      {
- *        __cursor: 'abc',
+ *        cursor: 'abc',
  *        node: {
  *          id: 'abc',
  *          name: 'frank'
  *        }
  *      },
  *      {
- *        __cursor: 'def',
+ *        cursor: 'def',
  *        node: {
  *          id: 'def',
  *          name: 'ursula'
  *        }
  *      },
  *      {
- *        __cursor: 'ghi',
+ *        cursor: 'ghi',
  *        node: {
  *          id: 'ghi',
  *          name: 'ira'
@@ -145,14 +145,14 @@ console.log(paginated)
  *  {
  *    edges: [
  *      {
- *        __cursor: 'abc',
+ *        cursor: 'abc',
  *        node: {
  *          id: 'abc',
  *          name: 'frank'
  *        }
  *      },
  *      {
- *        __cursor: 'def',
+ *        cursor: 'def',
  *        node: {
  *          id: 'def',
  *          name: 'ursula'
@@ -160,7 +160,7 @@ console.log(paginated)
  *      },
  *      // ...
  *      {
- *        __cursor: 'xyz',
+ *        cursor: 'xyz',
  *        node: {
  *          id: 'xyz',
  *          name: 'fancy'
@@ -214,7 +214,7 @@ const users = [
 
 const paginated = paginate(users, {}, { cursorKey: 'name' })
 
-console.log(paginated.edges[0].__cursor) // => 'frank'
+console.log(paginated.edges[0].cursor) // => 'frank'
 ```
 
 # Typescript Usage

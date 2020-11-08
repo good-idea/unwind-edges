@@ -12,7 +12,7 @@ export type Node = Record<string, any>
 export type Maybe<T> = T | null | void
 
 export interface Edge<T = Node> {
-  cursor?: Cursor | undefined
+  cursor?: Maybe<Cursor>
   node: T
 }
 
